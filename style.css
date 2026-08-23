@@ -1,0 +1,228 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f5f3;
+    color:#172536;
+}
+
+header{
+    background:#102b48;
+    color:white;
+    padding:16px 6%;
+}
+
+header h1{
+    margin:0;
+    font-size:28px;
+}
+
+header p{
+    margin:5px 0;
+}
+
+nav{
+    background:#102b48;
+    border-top:1px solid #38526b;
+    padding:14px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:8px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#f5b800;
+}
+
+.hero{
+    height:650px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:-20px;
+    background:url("rice-mill.jpg") center/cover;
+    filter:blur(8px);
+    transform:scale(1.05);
+    z-index:-2;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.30);
+    z-index:-1;
+}
+
+.hero h2{
+    font-size:72px;
+    letter-spacing:4px;
+    margin:0;
+}
+
+.hero h3{
+    color:#f5b800;
+    font-size:25px;
+}
+
+.hero p{
+    font-size:19px;
+}
+
+.owner-box{
+    background:rgba(0,0,0,0.55);
+    padding:12px 25px;
+    border:1px solid #f5b800;
+    border-radius:8px;
+    display:inline-block;
+    font-size:20px;
+}
+
+.btn{
+    display:inline-block;
+    background:#f5b800;
+    color:#172536;
+    padding:13px 24px;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.bottom-info{
+    background:#102b48;
+    color:white;
+    text-align:center;
+    padding:18px;
+    line-height:2;
+}
+
+section{
+    padding:55px 7%;
+}
+
+h2{
+    font-size:36px;
+    color:#102b48;
+}
+
+.two-column{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.photo{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,.18);
+}
+
+.center{
+    text-align:center;
+}
+
+.check{
+    color:#16643a;
+    font-size:18px;
+}
+
+.card{
+    background:white;
+    margin:12px 0;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.price{
+    font-size:48px;
+    color:#16643a;
+    font-weight:bold;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.process{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+}
+
+.process-box{
+    width:300px;
+    text-align:center;
+}
+
+.process-box img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.arrow{
+    font-size:50px;
+    color:#16643a;
+}
+
+footer{
+    background:#102b48;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:800px){
+
+    .two-column{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .process{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .hero h2{
+        font-size:45px;
+    }
+}
