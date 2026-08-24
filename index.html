@@ -3,54 +3,696 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vandana Industries</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<title>Vandana Industries | Premium Rice & Wheat Mill</title>
+<meta name="description" content="Vandana Industries — golden grain, milled with heritage. Premium rice, wheat flour and grain products from Ambedkar Nagar, Uttar Pradesh.">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="dns-prefetch" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --wheat-gold: #D9A441;
+    --wheat-gold-deep: #B9791E;
+    --paddy-green: #1F5C42;
+    --paddy-green-deep: #123B2B;
+    --husk-cream: #FBF3E2;
+    --earth-brown: #2E2117;
+    --clay-terra: #C1512F;
+    --sky-mist: #EAF3EC;
+    --glass-fill: rgba(255,255,255,0.14);
+    --glass-fill-strong: rgba(255,255,255,0.22);
+    --glass-border: rgba(255,255,255,0.35);
+    --shadow-soft: 0 8px 32px rgba(46,33,23,0.18);
+    --ff-display: "Fraunces", serif;
+    --ff-body: "Plus Jakarta Sans", sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--ff-body);
+    background:var(--husk-cream);
+    color:var(--earth-brown);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  ::selection{background:var(--wheat-gold);color:var(--paddy-green-deep);}
+
+  .eyebrow{
+    font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;
+    font-weight:700;color:var(--wheat-gold-deep);
+    display:inline-flex;align-items:center;gap:0.55rem;margin-bottom:1rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--wheat-gold-deep);display:inline-block;}
+  h1,h2,h3{font-family:var(--ff-display);font-weight:600;line-height:1.05;color:var(--paddy-green-deep);}
+  .section-head{max-width:640px;margin:0 auto 3.2rem;text-align:center;}
+  .section-head p{color:#5b5045;font-size:1.02rem;margin-top:0.9rem;line-height:1.6;}
+  section{position:relative;padding:6.5rem 6vw;scroll-margin-top:6.5rem;}
+  .wrap{max-width:1200px;margin:0 auto;}
+
+  /* ============ PRELOADER ============ */
+  #preloader{
+    position:fixed;inset:0;z-index:9999;
+    background:linear-gradient(160deg,var(--paddy-green-deep),var(--paddy-green) 60%, var(--wheat-gold-deep));
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  #preloader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .silo{
+    position:relative;width:78px;height:110px;
+    border:2.5px solid rgba(255,255,255,0.55);
+    border-radius:38px 38px 10px 10px;
+    overflow:hidden;background:rgba(255,255,255,0.06);
+    box-shadow:0 0 40px rgba(217,164,65,0.25);
+  }
+  .silo-fill{
+    position:absolute;left:0;right:0;bottom:0;height:0%;
+    background:linear-gradient(180deg,#F3D48A,var(--wheat-gold) 55%, var(--wheat-gold-deep));
+    animation:fillSilo 2.1s ease-in-out infinite;
+  }
+  @keyframes fillSilo{
+    0%{height:6%;}
+    50%{height:88%;}
+    100%{height:6%;}
+  }
+  .preloader-word{
+    margin-top:1.6rem;font-family:var(--ff-display);color:var(--husk-cream);
+    letter-spacing:0.3em;font-size:0.8rem;text-transform:uppercase;opacity:0.9;
+  }
+  .preloader-word b{color:var(--wheat-gold);font-weight:700;}
+
+  /* ============ NAV ============ */
+  header{
+    position:fixed;top:1.1rem;left:50%;transform:translateX(-50%);
+    width:min(94vw,1180px);z-index:500;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0.75rem 0.9rem 0.75rem 1.4rem;border-radius:100px;
+    background:var(--glass-fill);backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid var(--glass-border);
+    box-shadow:var(--shadow-soft);
+    transition:background .3s ease;
+  }
+  .logo{display:flex;align-items:center;gap:0.6rem;font-family:var(--ff-display);font-weight:700;color:var(--paddy-green-deep);font-size:1.08rem;}
+  .logo-mark{
+    width:34px;height:34px;border-radius:50%;
+    background:conic-gradient(from 210deg, var(--wheat-gold), var(--clay-terra), var(--paddy-green), var(--wheat-gold));
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,0.5);
+  }
+  .logo-mark span{font-size:1rem;}
+  nav ul{display:flex;gap:2.1rem;}
+  nav a{
+    font-size:0.86rem;font-weight:600;color:var(--earth-brown);
+    position:relative;padding:0.3rem 0;
+  }
+  nav a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+    background:var(--clay-terra);transition:width .3s ease;
+  }
+  nav a:hover::after{width:100%;}
+  .nav-cta{
+    padding:0.62rem 1.35rem;border-radius:100px;
+    background:var(--paddy-green-deep);color:var(--husk-cream)!important;
+    font-weight:700;font-size:0.82rem;box-shadow:0 6px 18px rgba(18,59,43,0.35);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(18,59,43,0.45);}
+  .burger{display:none;width:38px;height:38px;border-radius:50%;background:var(--glass-fill-strong);align-items:center;justify-content:center;}
+  .burger span, .burger span::before, .burger span::after{
+    content:"";display:block;width:16px;height:2px;background:var(--paddy-green-deep);position:relative;
+  }
+  .burger span::before{position:absolute;top:-5px;}
+  .burger span::after{position:absolute;top:5px;}
+
+  /* ============ HERO ============ */
+  #home{
+    position:relative;min-height:100vh;padding:0 0 5rem;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:1;
+    background-color:#2a4a34;
+    background-size:cover;background-position:center;
+    animation:kenburns 22s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{
+    0%{transform:scale(1) translate(0,0);}
+    100%{transform:scale(1.14) translate(-1.5%,-2%);}
+  }
+  .hero-overlay{
+    position:absolute;inset:0;z-index:2;
+    background:linear-gradient(180deg, rgba(18,59,43,0.55) 0%, rgba(18,59,43,0.72) 55%, rgba(46,33,23,0.88) 100%);
+  }
+  #grain-canvas{position:absolute;inset:0;z-index:3;pointer-events:none;}
+  .hero-content{
+    position:relative;z-index:4;width:100%;padding:0 6vw;
+    padding-top:6rem;
+  }
+  .hero-content .eyebrow{color:var(--wheat-gold);}
+  .hero-content .eyebrow::before{background:var(--wheat-gold);}
+  .hero-content h1{
+    color:var(--husk-cream);font-size:clamp(2.6rem,6.4vw,5.4rem);
+    max-width:15ch;font-weight:600;
+  }
+  .hero-content h1 em{font-style:italic;color:var(--wheat-gold);font-weight:500;}
+  .hero-sub{
+    max-width:520px;color:rgba(251,243,226,0.86);font-size:1.08rem;
+    margin-top:1.5rem;line-height:1.65;
+  }
+  .hero-actions{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap;align-items:center;}
+  .btn-solid{
+    padding:0.95rem 1.9rem;border-radius:100px;background:var(--wheat-gold);
+    color:var(--paddy-green-deep);font-weight:700;font-size:0.92rem;
+    box-shadow:0 10px 26px rgba(217,164,65,0.4);transition:transform .25s ease;
+  }
+  .btn-solid:hover{transform:translateY(-3px);}
+  .btn-ghost{
+    padding:0.95rem 1.7rem;border-radius:100px;
+    background:var(--glass-fill);border:1px solid var(--glass-border);
+    backdrop-filter:blur(12px);color:var(--husk-cream);font-weight:600;font-size:0.9rem;
+    transition:background .25s ease;
+  }
+  .btn-ghost:hover{background:var(--glass-fill-strong);}
+
+  .hero-stats{
+    position:relative;z-index:4;display:flex;gap:0;flex-wrap:wrap;
+    margin:4.2rem 6vw 0;
+    border-radius:26px;overflow:hidden;
+    background:var(--glass-fill);backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    border:1px solid var(--glass-border);
+  }
+  .stat{flex:1 1 150px;padding:1.6rem 1.8rem;border-right:1px solid rgba(255,255,255,0.18);}
+  .stat:last-child{border-right:none;}
+  .stat b{display:block;font-family:var(--ff-display);font-size:2.1rem;color:var(--wheat-gold);font-weight:700;}
+  .stat span{font-size:0.78rem;color:rgba(251,243,226,0.75);letter-spacing:0.04em;}
+
+  .scroll-cue{
+    position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:4;
+    display:flex;flex-direction:column;align-items:center;gap:0.4rem;
+    color:rgba(251,243,226,0.7);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
+  }
+  .scroll-cue .line{width:1px;height:34px;background:linear-gradient(180deg,rgba(251,243,226,0.8),transparent);animation:scrollcue 1.8s ease-in-out infinite;}
+  @keyframes scrollcue{0%{transform:scaleY(0.3);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}100%{transform:scaleY(0.3);transform-origin:bottom;}}
+
+  /* ============ REVEAL ============ */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ============ ABOUT ============ */
+  #about{background:radial-gradient(120% 100% at 10% 0%, #F6E6C4 0%, var(--husk-cream) 45%);}
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:3.5rem;align-items:center;}
+  .about-imgwrap{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-soft);background:linear-gradient(160deg,#e7d3a3,#c99a4f);transition:box-shadow .4s ease;}
+  .about-imgwrap:hover{box-shadow:0 20px 46px rgba(46,33,23,0.26);}
+  .about-imgwrap img{height:520px;object-fit:cover;width:100%;transition:transform .6s ease;display:block;}
+  .about-imgwrap:hover img{transform:scale(1.06);}
+  .about-badge{
+    position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;
+    background:var(--glass-fill-strong);backdrop-filter:blur(16px);
+    border:1px solid var(--glass-border);border-radius:18px;
+    padding:1rem 1.2rem;display:flex;align-items:center;gap:0.9rem;
+  }
+  .about-badge .num{font-family:var(--ff-display);font-size:1.7rem;color:var(--paddy-green-deep);font-weight:700;}
+  .about-badge span{font-size:0.76rem;color:var(--earth-brown);line-height:1.3;}
+  .about-copy h2{font-size:clamp(1.9rem,3.2vw,2.7rem);margin-bottom:1.2rem;}
+  .about-copy p{color:#5b5045;line-height:1.75;margin-bottom:1.1rem;font-size:1.02rem;}
+  .about-points{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;}
+  .about-point{
+    display:flex;gap:0.7rem;align-items:flex-start;padding:1rem;
+    background:var(--glass-fill);border:1px solid rgba(31,92,66,0.12);border-radius:16px;
+  }
+  .about-point .dot{width:9px;height:9px;border-radius:50%;background:var(--clay-terra);margin-top:0.4rem;flex-shrink:0;}
+  .about-point strong{display:block;font-size:0.9rem;color:var(--paddy-green-deep);}
+  .about-point p{font-size:0.82rem;color:#6b6053;margin:0.2rem 0 0;}
+
+  /* ============ PROCESS ============ */
+  #process{
+    background:linear-gradient(180deg, var(--paddy-green-deep), var(--paddy-green) 55%, #1a4d38);
+    color:var(--husk-cream);
+  }
+  #process .eyebrow{color:var(--wheat-gold);}
+  #process .eyebrow::before{background:var(--wheat-gold);}
+  #process .section-head h2{color:var(--husk-cream);}
+  #process .section-head p{color:rgba(251,243,226,0.75);}
+  .process-rail{
+    position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:1.1rem;
+  }
+  .process-rail::before{
+    content:"";position:absolute;top:44px;left:5%;right:5%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(217,164,65,0.5),transparent);
+  }
+  .p-step{
+    background:var(--glass-fill);border:1px solid rgba(255,255,255,0.16);
+    border-radius:20px;padding:1.4rem 1.1rem;backdrop-filter:blur(14px);
+    transition:transform .35s ease, background .35s ease;
+  }
+  .p-step:hover{transform:translateY(-8px);background:var(--glass-fill-strong);}
+  .p-num{
+    width:32px;height:32px;border-radius:50%;background:var(--wheat-gold);color:var(--paddy-green-deep);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;
+    margin-bottom:1rem;font-family:var(--ff-display);
+  }
+  .p-step h3{color:var(--husk-cream);font-size:1rem;font-weight:700;margin-bottom:0.5rem;font-family:var(--ff-body);}
+  .p-step p{font-size:0.8rem;color:rgba(251,243,226,0.7);line-height:1.55;}
+
+  /* ============ PRODUCTS ============ */
+  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+  .prod-card{
+    position:relative;border-radius:22px;overflow:hidden;height:340px;
+    box-shadow:var(--shadow-soft);
+    background:linear-gradient(160deg,#d8b877,#8f6a2f);
+    transition:box-shadow .35s ease;
+  }
+  .prod-card:hover{box-shadow:0 18px 40px rgba(46,33,23,0.28);}
+  .prod-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+  .prod-card:hover img{transform:scale(1.1);}
+  .prod-card::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%, rgba(18,20,14,0.85) 100%);
+  }
+  .prod-info{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.2rem;
+    background:var(--glass-fill);backdrop-filter:blur(16px);
+    border-top:1px solid var(--glass-border);
+    transform:translateY(58%);transition:transform .4s ease;
+  }
+  .prod-card:hover .prod-info{transform:translateY(0);}
+  .prod-info h3{color:var(--husk-cream);font-size:1.05rem;font-family:var(--ff-display);}
+  .prod-info p{color:rgba(251,243,226,0.75);font-size:0.78rem;margin-top:0.4rem;line-height:1.5;}
+  .prod-tag{
+    display:inline-block;margin-top:0.5rem;font-size:0.68rem;letter-spacing:0.08em;
+    color:var(--wheat-gold);text-transform:uppercase;font-weight:700;
+  }
+
+  /* ============ QUALITY / CERT STRIP ============ */
+  #quality{background:var(--husk-cream);padding-top:4rem;padding-bottom:4rem;}
+  .quality-strip{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:1.1rem;
+  }
+  .q-chip{
+    display:flex;align-items:center;gap:0.6rem;padding:0.9rem 1.4rem;border-radius:100px;
+    background:var(--glass-fill);border:1px solid rgba(31,92,66,0.15);
+    font-size:0.85rem;font-weight:600;color:var(--paddy-green-deep);
+  }
+  .q-chip .ico{font-size:1.1rem;}
+
+  /* ============ GALLERY ============ */
+  #gallery{background:linear-gradient(180deg, var(--husk-cream), #F3E6CC);}
+  .gal-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:1rem;
+  }
+  .gal-item{border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(160deg,#d8c290,#a9803f);box-shadow:0 6px 18px rgba(46,33,23,0.12);}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease, filter .5s ease;display:block;}
+  .gal-item:hover img{transform:scale(1.08);}
+  .gal-item.tall{grid-row:span 2;}
+  .gal-item.wide{grid-column:span 2;}
+
+  /* ============ CONTACT ============ */
+  #contact{
+    background:linear-gradient(160deg, var(--paddy-green-deep), #16432f 70%);
+    color:var(--husk-cream);
+  }
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+  .contact-copy .eyebrow{color:var(--wheat-gold);}
+  .contact-copy .eyebrow::before{background:var(--wheat-gold);}
+  .contact-copy h2{color:var(--husk-cream);font-size:clamp(1.9rem,3vw,2.6rem);margin-bottom:1.1rem;}
+  .contact-copy p{color:rgba(251,243,226,0.78);line-height:1.7;margin-bottom:1.8rem;}
+  .c-row{display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.2rem;}
+  .c-ico{
+    width:40px;height:40px;border-radius:12px;background:var(--glass-fill);
+    border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .c-row strong{display:block;font-size:0.88rem;}
+  .c-row span{font-size:0.82rem;color:rgba(251,243,226,0.7);}
+
+  .glass-form{
+    background:var(--glass-fill);border:1px solid var(--glass-border);
+    border-radius:26px;padding:2.2rem;backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    box-shadow:var(--shadow-soft);
+  }
+  .glass-form .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+  .glass-form label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:rgba(251,243,226,0.7);display:block;margin-bottom:0.4rem;}
+  .glass-form input, .glass-form textarea, .glass-form select{
+    width:100%;padding:0.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.25);
+    background:rgba(255,255,255,0.08);color:var(--husk-cream);font-family:inherit;font-size:0.9rem;
+    outline:none;transition:border .25s ease, background .25s ease;
+  }
+  .glass-form input::placeholder, .glass-form textarea::placeholder{color:rgba(251,243,226,0.4);}
+  .glass-form input:focus, .glass-form textarea:focus, .glass-form select:focus{
+    border-color:var(--wheat-gold);background:rgba(255,255,255,0.14);
+  }
+  .glass-form .full{margin-bottom:1rem;}
+  .glass-form button{
+    width:100%;padding:0.95rem;border-radius:100px;background:var(--wheat-gold);
+    color:var(--paddy-green-deep);font-weight:700;margin-top:0.4rem;font-size:0.92rem;
+    transition:transform .25s ease;
+  }
+  .glass-form button:hover{transform:translateY(-2px);}
+  .form-note{font-size:0.72rem;color:rgba(251,243,226,0.5);margin-top:0.9rem;text-align:center;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--earth-brown);color:rgba(251,243,226,0.75);
+    padding:3rem 6vw 1.6rem;font-size:0.85rem;
+  }
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.2rem;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .foot-logo{font-family:var(--ff-display);color:var(--husk-cream);font-size:1.2rem;font-weight:700;margin-bottom:0.8rem;}
+  .foot-grid h4{color:var(--husk-cream);font-size:0.82rem;margin-bottom:1rem;letter-spacing:0.05em;text-transform:uppercase;}
+  .foot-grid li{margin-bottom:0.6rem;}
+  .foot-grid a:hover{color:var(--wheat-gold);}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:1.4rem;flex-wrap:wrap;gap:0.6rem;font-size:0.76rem;color:rgba(251,243,226,0.5);}
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 980px){
+    .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .process-rail{grid-template-columns:repeat(3,1fr);}
+    .process-rail::before{display:none;}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .gal-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 720px){
+    nav ul{
+      position:fixed;top:5.4rem;right:3vw;left:3vw;
+      flex-direction:column;background:rgba(251,243,226,0.97);backdrop-filter:blur(20px);
+      border-radius:22px;padding:1.4rem;gap:0.3rem;box-shadow:var(--shadow-soft);
+      display:none;border:1px solid var(--glass-border);
+    }
+    nav ul.open{display:flex;}
+    nav a{display:block;padding:0.7rem 0.4rem;color:var(--earth-brown);}
+    .nav-cta{text-align:center;}
+    .burger{display:flex;}
+    .hero-stats{flex-direction:column;}
+    .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.18);}
+    .about-points{grid-template-columns:1fr;}
+    .process-rail{grid-template-columns:1fr 1fr;}
+    .prod-grid{grid-template-columns:1fr;}
+    .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:140px;}
+    .gal-item.wide{grid-column:span 2;}
+    section{padding:4.5rem 5vw;}
+  }
+</style>
+</head>
 <body>
 
-<header>
-    <h1>Vandana Industries</h1>
-    <p>Rice & Wheat Mill</p>
-</header>
+  <!-- ============ PRELOADER ============ -->
+  <div id="preloader">
+    <div class="silo"><div class="silo-fill"></div></div>
+    <div class="preloader-word">Milling <b>Vandana</b> Industries</div>
+  </div>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="products.html">Products</a>
-    <a href="prices.html">Prices</a>
-    <a href="services.html">Services</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="quality.html">Quality</a>
-    <a href="what-we-do.html">What We Do</a>
-    <a href="contact.html">Contact</a>
-</nav>
+  <!-- ============ NAV ============ -->
+  <header>
+    <a href="#home" class="logo">
+      <span class="logo-mark"><span>🌾</span></span>
+      Vandana Industries
+    </a>
+    <nav>
+      <ul id="navlist">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get Quote</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </header>
 
-<section class="hero">
+  <!-- ============ HERO ============ -->
+  <section id="home">
+    <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1761549849498-8cf23a31329d?auto=format&fit=crop&w=1800&q=80')"></div>
+    <div class="hero-overlay"></div>
+    <canvas id="grain-canvas"></canvas>
+
     <div class="hero-content">
-        <h2>VANDANA<br>INDUSTRIES</h2>
-
-        <h3>RICE & WHEAT MILL</h3>
-
-        <p>Quality You Can Trust.<br>Service You Can Count On.</p>
-
-        <div class="owner-box">
-            <b>Owner: Rakesh Verma</b>
-        </div>
-
-        <br>
-        <a href="contact.html" class="btn">CONTACT US</a>
+      <div class="eyebrow">Est. Ambedkar Nagar, Uttar Pradesh</div>
+      <h1>From golden <em>fields</em><br>to your table.</h1>
+      <p class="hero-sub">Vandana Industries mills premium rice and wheat with three generations of craft — clean, graded and packed for kitchens, wholesalers and exporters across India.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-solid">Explore Products</a>
+        <a href="#process" class="btn-ghost">See Our Process ↓</a>
+      </div>
     </div>
-</section>
 
-<div class="bottom-info">
-    📍 Khajuri Karodi, Ambedkar Nagar<br>
-    📞 8115912090 | 9196070196 | 6306481291
-</div>
+    <div class="hero-stats reveal">
+      <div class="stat"><b>30+</b><span>Years of Milling Craft</span></div>
+      <div class="stat"><b>120T</b><span>Processed Daily</span></div>
+      <div class="stat"><b>15+</b><span>States Supplied</span></div>
+      <div class="stat"><b>100%</b><span>Quality Graded Grain</span></div>
+    </div>
 
-<footer>
-    © 2026 Vandana Industries
-</footer>
+    <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+  </section>
 
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-imgwrap reveal">
+        <img src="https://images.unsplash.com/photo-1644377949116-c4a6b529241c?auto=format&fit=crop&w=900&q=80" alt="Grain stored in the Vandana Industries mill" loading="eager" decoding="async">
+        <div class="about-badge">
+          <span class="num">03</span>
+          <span>Generations running this mill on the same principle — never compromise the grain.</span>
+        </div>
+      </div>
+      <div class="about-copy reveal">
+        <div class="eyebrow">Who We Are</div>
+        <h2>A family mill, run like a precision workshop.</h2>
+        <p>Vandana Industries began as a single stone mill in Khajuri Karodi and has grown into a full-line rice and wheat processing unit — without losing the hands-on care that started it. Every batch is watched, tasted and graded before it leaves the floor.</p>
+        <p>We work directly with regional farmers, which means shorter supply chains, fresher grain, and prices that stay honest for everyone.</p>
+        <div class="about-points">
+          <div class="about-point"><span class="dot"></span><div><strong>Farm-direct sourcing</strong><p>Grain bought straight from regional growers.</p></div></div>
+          <div class="about-point"><span class="dot"></span><div><strong>Modern grading line</strong><p>Sortex-cleaned, moisture-tested batches.</p></div></div>
+          <div class="about-point"><span class="dot"></span><div><strong>Bulk & retail packing</strong><p>From 1kg pouches to 50kg export bags.</p></div></div>
+          <div class="about-point"><span class="dot"></span><div><strong>Pan-India dispatch</strong><p>Reliable logistics to 15+ states.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">How It's Milled</div>
+        <h2>Six stages, one standard.</h2>
+        <p>Every sack that leaves Vandana Industries has passed through the same disciplined line — from raw paddy to a grain you can trust.</p>
+      </div>
+      <div class="process-rail">
+        <div class="p-step reveal"><div class="p-num">01</div><h3>Procurement</h3><p>Paddy & wheat sourced fresh from partner farms nearby.</p></div>
+        <div class="p-step reveal"><div class="p-num">02</div><h3>Cleaning</h3><p>Stones, husk & dust removed on the pre-cleaning line.</p></div>
+        <div class="p-step reveal"><div class="p-num">03</div><h3>Milling</h3><p>Precision hulling & grinding tuned for each grain type.</p></div>
+        <div class="p-step reveal"><div class="p-num">04</div><h3>Polishing</h3><p>Gentle polishing for grain that cooks even & clean.</p></div>
+        <div class="p-step reveal"><div class="p-num">05</div><h3>Grading</h3><p>Sortex sorting by size, colour and moisture content.</p></div>
+        <div class="p-step reveal"><div class="p-num">06</div><h3>Packing</h3><p>Sealed & labelled — from 1kg retail to bulk export bags.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTS ============ -->
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Our Grain</div>
+        <h2>Milled for every kitchen.</h2>
+        <p>A full range of rice, flour and by-products — each graded to its own standard.</p>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card reveal">
+          <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=700&q=80" alt="Premium Basmati Rice" loading="lazy" decoding="async">
+          <div class="prod-info"><span class="prod-tag">Signature</span><h3>Basmati Rice</h3><p>Long-grain, aged for aroma and a fluffy cook.</p></div>
+        </div>
+        <div class="prod-card reveal">
+          <img src="https://images.unsplash.com/photo-1714842981153-ffeaf74e7a1a?auto=format&fit=crop&w=700&q=80" alt="Wheat Flour" loading="lazy" decoding="async">
+          <div class="prod-info"><span class="prod-tag">Daily Staple</span><h3>Wheat Flour (Atta)</h3><p>Stone-ground for softer rotis, full-grain nutrition.</p></div>
+        </div>
+        <div class="prod-card reveal">
+          <img src="https://images.unsplash.com/photo-1530496216518-a53d24e99c31?auto=format&fit=crop&w=700&q=80" alt="Broken Rice" loading="lazy" decoding="async">
+          <div class="prod-info"><span class="prod-tag">Bulk & Trade</span><h3>Broken Rice</h3><p>Economical grade for bulk kitchens & exports.</p></div>
+        </div>
+        <div class="prod-card reveal">
+          <img src="https://images.unsplash.com/photo-1584269903637-e1b1c717a2b4?auto=format&fit=crop&w=700&q=80" alt="Rice Bran" loading="lazy" decoding="async">
+          <div class="prod-info"><span class="prod-tag">By-Product</span><h3>Rice Bran</h3><p>Feed & oil-grade bran from every milling run.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUALITY ============ -->
+  <section id="quality">
+    <div class="wrap">
+      <div class="quality-strip reveal">
+        <div class="q-chip"><span class="ico">✅</span>FSSAI Certified</div>
+        <div class="q-chip"><span class="ico">🌾</span>Sortex Graded</div>
+        <div class="q-chip"><span class="ico">⚖️</span>ISO Quality Line</div>
+        <div class="q-chip"><span class="ico">📦</span>Export Ready Packing</div>
+        <div class="q-chip"><span class="ico">🚚</span>Pan-India Logistics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Inside The Mill</div>
+        <h2>From the floor.</h2>
+      </div>
+      <div class="gal-grid">
+        <div class="gal-item tall reveal"><img src="https://images.unsplash.com/photo-1549888722-bf34acd6a68c?auto=format&fit=crop&w=600&q=80" alt="Paddy field" loading="lazy" decoding="async"></div>
+        <div class="gal-item wide reveal"><img src="https://images.unsplash.com/photo-1644377949116-c4a6b529241c?auto=format&fit=crop&w=900&q=80" alt="Grain storage" loading="lazy" decoding="async"></div>
+        <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1714842981153-ffeaf74e7a1a?auto=format&fit=crop&w=500&q=80" alt="Flour close up" loading="lazy" decoding="async"></div>
+        <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80" alt="Rice grains" loading="lazy" decoding="async"></div>
+        <div class="gal-item wide reveal"><img src="https://images.unsplash.com/photo-1761549849498-8cf23a31329d?auto=format&fit=crop&w=900&q=80" alt="Golden field at sunset" loading="lazy" decoding="async"></div>
+        <div class="gal-item tall reveal"><img src="https://images.unsplash.com/photo-1530496216518-a53d24e99c31?auto=format&fit=crop&w=600&q=80" alt="Grain sacks" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy reveal">
+        <div class="eyebrow">Get In Touch</div>
+        <h2>Let's talk about your order.</h2>
+        <p>Wholesale, retail or export — tell us what you need and our team will get back with pricing and availability.</p>
+        <div class="c-row"><div class="c-ico">📍</div><div><strong>Mill Address</strong><span>Khajuri Karodi, Ambedkar Nagar, Uttar Pradesh</span></div></div>
+        <div class="c-row"><div class="c-ico">📞</div><div><strong>Phone</strong><span>+91 XXXXX XXXXX</span></div></div>
+        <div class="c-row"><div class="c-ico">✉️</div><div><strong>Email</strong><span>contact@vandanaindustries.in</span></div></div>
+      </div>
+      <form class="glass-form reveal" onsubmit="return false;">
+        <div class="frow">
+          <div><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+          <div><label>Phone</label><input type="tel" placeholder="+91"></div>
+        </div>
+        <div class="full"><label>Email</label><input type="email" placeholder="you@company.com" required></div>
+        <div class="full"><label>Requirement</label>
+          <select><option>Rice — Bulk Order</option><option>Wheat Flour — Bulk Order</option><option>Export Enquiry</option><option>Other</option></select>
+        </div>
+        <div class="full"><label>Message</label><textarea rows="3" placeholder="Tell us the quantity & grade you need"></textarea></div>
+        <button type="submit">Send Enquiry</button>
+        <p class="form-note">We usually reply within 24 hours.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">🌾 Vandana Industries</div>
+        <p>Premium rice & wheat milling from Ambedkar Nagar, Uttar Pradesh — serving kitchens and traders across India.</p>
+      </div>
+      <div><h4>Explore</h4><ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul></div>
+      <div><h4>Products</h4><ul>
+        <li><a href="#products">Basmati Rice</a></li>
+        <li><a href="#products">Wheat Flour</a></li>
+        <li><a href="#products">Broken Rice</a></li>
+        <li><a href="#products">Rice Bran</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li>Khajuri Karodi, Ambedkar Nagar, UP</li>
+        <li>contact@vandanaindustries.in</li>
+        <li>+91 XXXXX XXXXX</li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Vandana Industries. All rights reserved.</span>
+      <span>Crafted by Webglut</span>
+    </div>
+  </footer>
+
+<script>
+  // ---- Preloader ----
+  (function(){
+    var hidden = false;
+    function hidePreloader(){
+      if (hidden) return;
+      hidden = true;
+      var pre = document.getElementById('preloader');
+      if (pre) pre.classList.add('hide');
+    }
+    // Hide as soon as the page has painted (don't wait on slow hotlinked images)
+    window.addEventListener('DOMContentLoaded', function(){
+      setTimeout(hidePreloader, 900);
+    });
+    // Hard ceiling: never show the preloader past 2 seconds, no matter what
+    setTimeout(hidePreloader, 2000);
+    // If everything finishes loading faster, that's fine too
+    window.addEventListener('load', function(){
+      setTimeout(hidePreloader, 300);
+    });
+  })();
+
+  // ---- Mobile menu ----
+  const burger = document.getElementById('burger');
+  const navlist = document.getElementById('navlist');
+  burger.addEventListener('click', () => navlist.classList.toggle('open'));
+  navlist.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlist.classList.remove('open')));
+
+  // ---- Scroll reveal ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---- Header shrink shadow on scroll ----
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 40 ? '0 10px 30px rgba(46,33,23,0.25)' : 'var(--shadow-soft)';
+  });
+
+  // ---- Floating grain particles on hero ----
+  const canvas = document.getElementById('grain-canvas');
+  const ctx = canvas.getContext('2d');
+  let grains = [];
+  function resizeCanvas(){
+    const hero = document.getElementById('home');
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  function initGrains(){
+    grains = Array.from({length: 46}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.8 + 0.6,
+      s: Math.random() * 0.35 + 0.08,
+      drift: Math.random() * 0.6 - 0.3,
+      o: Math.random() * 0.5 + 0.25
+    }));
+  }
+  function animateGrains(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    grains.forEach(g => {
+      g.y += g.s;
+      g.x += g.drift * 0.2;
+      if (g.y > canvas.height) { g.y = -6; g.x = Math.random() * canvas.width; }
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(217,164,65,${g.o})`;
+      ctx.ellipse(g.x, g.y, g.r, g.r * 1.8, 0.4, 0, Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(animateGrains);
+  }
+  resizeCanvas(); initGrains(); animateGrains();
+  window.addEventListener('resize', () => { resizeCanvas(); });
+</script>
 </body>
 </html>
